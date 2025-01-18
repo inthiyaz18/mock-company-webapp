@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-java@v2  # Set up Java (JDK 11)
         with:
           java-version: '11'  # We're using JDK 11
-          distribution: 'adoptopenjdk'  # Use AdoptOpenJDK for compatibility
+          distribution: 'temurin'  # Use Adoptium's Temurin JDK
 
       - name: Build with Gradle
         run: ./gradlew build  # Builds the project using Gradle (build task)
