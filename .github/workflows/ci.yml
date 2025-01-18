@@ -1,26 +1,25 @@
-name: Continuous Integration
+name: Java CI with Gradle
 
 on:
   push:
     branches:
-      - '**'  # Trigger on every branch push
+      - '**'  # This will trigger the workflow on every push to any branch
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # You can also use windows-latest or macos-latest
+    runs-on: ubuntu-latest  # Using Ubuntu as the OS for the CI environment
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2  # This step checks out the code from your repo
 
       - name: Set up JDK 11
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v2  # Set up Java (JDK 11)
         with:
-          java-version: '11'  # Ensure it's JDK 11
-          distribution: 'adoptopenjdk'  # Use AdoptOpenJDK for better compatibility
+          java-version: '11'  # We're using JDK 11
 
       - name: Build with Gradle
-        run: ./gradlew assemble
+        run: ./gradlew build  # Builds the project using Gradle (build task)
 
       - name: Run tests with Gradle
-        run: ./gradlew test
+        run: ./gradlew test  # Runs the tests using Gradle (test task)
